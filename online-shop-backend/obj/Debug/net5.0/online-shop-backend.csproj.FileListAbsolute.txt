@@ -156,3 +156,11 @@ C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\r
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\RegisterConfirmation.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\MailKit.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\MimeKit.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_LoginLayout.cshtml.g.cs

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using online_shop_backend.Data;
+using online_shop_backend.Emailing;
+using online_shop_backend.ServicesConfiguration;
 
 namespace online_shop_backend
 {
@@ -31,8 +33,9 @@ namespace online_shop_backend
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            services.AddIdentityServices();
+            services.AddEmailServiceWithConf(Configuration);
             
             services.AddRazorPages();
         }
