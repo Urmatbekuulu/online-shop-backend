@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using online_shop_backend.Data;
 using online_shop_backend.Emailing;
 using online_shop_backend.ServicesConfiguration;
@@ -35,7 +36,15 @@ namespace online_shop_backend
             services.AddDatabaseDeveloperPageExceptionFilter();
             
             services.AddIdentityServices();
+            services.AddControllers();
             services.AddEmailServiceWithConf(Configuration);
+            
+
+           
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarsWebApi", Version = "v1" });
+            });
             
             services.AddRazorPages();
         }
@@ -46,6 +55,8 @@ namespace online_shop_backend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarsWebApi v1"));
             }
             else
             {
@@ -65,6 +76,7 @@ namespace online_shop_backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

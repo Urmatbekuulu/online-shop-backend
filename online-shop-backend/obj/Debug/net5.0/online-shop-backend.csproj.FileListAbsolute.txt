@@ -164,3 +164,10 @@ C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\B
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml.g.cs
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\_LoginLayout.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
