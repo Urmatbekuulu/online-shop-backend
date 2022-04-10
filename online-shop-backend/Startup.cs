@@ -41,10 +41,7 @@ namespace online_shop_backend
             
 
            
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarsWebApi", Version = "v1" });
-            });
+            services.AddSwagger();
             
             services.AddRazorPages();
         }
@@ -55,8 +52,7 @@ namespace online_shop_backend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarsWebApi v1"));
+               
             }
             else
             {
@@ -72,6 +68,15 @@ namespace online_shop_backend
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSwagger();
+            app.UseSwaggerUI(setup =>
+            {
+                setup.RoutePrefix = string.Empty;
+
+                setup.SwaggerEndpoint(
+                    url: "/swagger/v1/swagger.json",
+                    name: "Online-shop v1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
