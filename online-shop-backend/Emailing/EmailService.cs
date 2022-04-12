@@ -43,7 +43,11 @@ namespace online_shop_backend.Emailing
                 body:$"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
             );
         }
-        
-        
+
+
+        public void SendAlreadyRegisteredEmailAsync(string requestEmail, string hostValue)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

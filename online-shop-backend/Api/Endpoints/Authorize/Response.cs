@@ -2,6 +2,6 @@
 {
     public class Response
     {
-        public record Result(bool IsSuccess);
+        public record Result(string message);
     }
 }

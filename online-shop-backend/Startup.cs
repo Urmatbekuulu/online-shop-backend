@@ -35,7 +35,7 @@ namespace online_shop_backend
             );
             services.AddDatabaseDeveloperPageExceptionFilter();
             
-            services.AddIdentityServices();
+            services.AddIdentityServices(Configuration.GetSection(nameof(JwtConfiguration)));
             services.AddControllers();
             services.AddEmailServiceWithConf(Configuration);
             

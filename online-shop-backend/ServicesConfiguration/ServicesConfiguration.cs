@@ -1,7 +1,14 @@
 ﻿
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using System.Threading.Tasks;
+using Common.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using online_shop_backend.Data;
 
@@ -9,15 +16,81 @@ namespace online_shop_backend.ServicesConfiguration
 {
     public static class ServicesConfiguration
     {
-        public static void AddIdentityServices(this IServiceCollection services)
+        public static void AddIdentityServices(this IServiceCollection services,IConfigurationSection jwtConfiguration)
         {
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.Configure<IdentityOptions>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+            var signingKey = new SymmetricSecurityKey(
+                Encoding.Default.GetBytes(jwtConfiguration["Secret"]));
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+            var issuer = jwtConfiguration[nameof(JwtConfiguration.Issuer)];
+            var audience = jwtConfiguration[nameof(JwtConfiguration.Audience)];
+            var validFor = TimeSpan.FromMinutes(jwtConfiguration[nameof(JwtConfiguration.ValidFor)].AsInt());
+            var refreshTokenTtl = jwtConfiguration[nameof(JwtConfiguration.RefreshTokenTtl)].AsInt();
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                options.User.RequireUniqueEmail = true;
-                options.SignIn.RequireConfirmedEmail = true;
+                ValidateIssuer = true,
+                ValidIssuer = issuer,
+
+                ValidateAudience = true,
+                ValidAudience = audience,
+
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingCredentials.Key,
+
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+            };
+
+            services.Configure<JwtConfiguration>(options =>
+            {
+                options.Issuer = issuer;
+                options.Audience = audience;
+                options.ValidFor = validFor;
+                options.SigningCredentials = signingCredentials;
+                options.RefreshTokenTtl = refreshTokenTtl;
             });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(configureOptions =>
+                {
+                    configureOptions.ClaimsIssuer = issuer;
+                    configureOptions.TokenValidationParameters = tokenValidationParameters;
+                    configureOptions.SaveToken = true;
+                    configureOptions.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            // This is to enable parsing the token from an authorization header in the format 'Token {token}'
+                            var token = context.HttpContext.Request.Headers["Authorization"];
+                            if (token.Count > 0 && token[0].StartsWith("Token ", StringComparison.OrdinalIgnoreCase))
+                            {
+                                context.Token = token[0]["Token ".Length..].Trim();
+                            }
+
+                            return Task.CompletedTask;
+                        },
+                        OnAuthenticationFailed = context =>
+                        {
+                            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                                context.Response.Headers.Add("Token-Expired", "true");
+                            
+                            return Task.CompletedTask;
+                        },
+                    };
+                });
+          
         }
 
         public static void AddSwagger(this IServiceCollection services)

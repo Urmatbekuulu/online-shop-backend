@@ -175,3 +175,4 @@ C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\S
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Ardalis.ApiEndpoints.dll
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
