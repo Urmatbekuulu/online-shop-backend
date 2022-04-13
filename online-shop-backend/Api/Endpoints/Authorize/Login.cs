@@ -12,10 +12,14 @@ namespace online_shop_backend.Api.Endpoints.Authorize
     public class Login:EndpointBaseAsync.WithRequest<Request.Input>.WithResult<ActionResult<Response.Result>>
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IJwtFactory _jwtFactory;
 
-        public Login(SignInManager<ApplicationUser> signInManager)
+        public Login(SignInManager<ApplicationUser> signInManager,IJwtFactory jwtFactory,UserManager<ApplicationUser> userManager)
         {
+            _jwtFactory = jwtFactory;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
         [HttpPost("api/login")]
         [SwaggerOperation(
@@ -28,12 +32,22 @@ namespace online_shop_backend.Api.Endpoints.Authorize
             if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
                 return BadRequest("empty username");
 
-            ApplicationUser user = new ApplicationUser(){Email = request.Email};
-            var result = await _signInManager.PasswordSignInAsync(request.Email, request.Password,false,false);
+            var user = await  _userManager.FindByEmailAsync(request.Email);
+
+            var result = await _signInManager.PasswordSignInAsync(user.Email, request.Password,false,false);
             if (!result.Succeeded)
                 return BadRequest("Email or password is invalid");
 
-            return new Response.Result("success");
+            var (jwtToken, jwtExpires) = await _jwtFactory.CreateTokenAsync(user.Id, user.Email);
+
+            return new Response.Result
+            {
+                Username = user.Email,
+                UserId = user.Id,
+                JwtToken = jwtToken,
+                JwtExpires = jwtExpires
+
+            };
         }
     }
 }
