@@ -14,9 +14,7 @@ namespace online_shop_backend.Api.Endpoints.Authorize
 
             public DateTime JwtExpires { get; set; }
 
-            public string RefreshToken { get; set; }
-
-            public DateTime RefreshExpires { get; set; }
+          
         }
     }
 }
