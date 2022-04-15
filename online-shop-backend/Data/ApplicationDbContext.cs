@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using online_shop_backend.Entities;
 
 namespace online_shop_backend.Data
 {
@@ -10,7 +11,7 @@ namespace online_shop_backend.Data
             : base(options)
         {
         }
-
+        public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

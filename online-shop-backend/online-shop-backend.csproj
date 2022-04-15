@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Api\Endpoints\Products" />
     <Folder Include="Services" />
   </ItemGroup>
 

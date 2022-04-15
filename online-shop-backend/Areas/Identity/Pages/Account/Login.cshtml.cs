@@ -55,6 +55,7 @@ namespace online_shop_backend.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
+        [HttpGet("index")]
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))

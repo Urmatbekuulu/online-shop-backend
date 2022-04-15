@@ -4,10 +4,13 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace online_shop_backend.Pages
 {
+   
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -17,9 +20,10 @@ namespace online_shop_backend.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+             return RedirectToPage("Account/Login", new {area = "Identity"});;
         }
+       
     }
 }
