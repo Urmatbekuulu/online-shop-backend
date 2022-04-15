@@ -175,4 +175,9 @@ C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\A
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Pages\Home.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\Index.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Notnik_kg\c#\online-shop-backend\online-shop-backend\obj\Debug\net5.0\Razor\Areas\Admin\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
